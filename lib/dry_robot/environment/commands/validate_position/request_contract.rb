@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'dry-validation'
-require_relative '../../types'
+require 'dry-types'
 
 Dry::Validation.load_extensions(:monads)
 
@@ -11,8 +11,8 @@ module DryRobot
       module ValidatePosition
         class RequestContract < Dry::Validation::Contract
           params do
-            required(:x_point).filled(Types::Strict::Integer, gt?: 0)
-            required(:y_point).filled(Types::Strict::Integer, gt?: 0)
+            required(:x_point).filled(Dry::Types['strict.integer'], gt?: 0)
+            required(:y_point).filled(Dry::Types['strict.integer'], gt?: 0)
           end
         end
       end

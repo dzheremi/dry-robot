@@ -111,6 +111,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dry-initializer
   dry-monads
   dry-system
   dry-types
