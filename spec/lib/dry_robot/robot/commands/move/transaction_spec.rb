@@ -29,6 +29,7 @@ RSpec.describe DryRobot::Robot::Commands::Move::Transaction do
       before do
         allow(robot_model).to receive(:next_movement).and_return(input)
         allow(robot_model).to receive(:move).and_return(input)
+        allow(robot_model).to receive(:report).and_return('Good')
       end
 
       it 'returns a success' do

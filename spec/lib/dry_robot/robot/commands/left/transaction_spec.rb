@@ -7,7 +7,7 @@ require 'dry_robot/robot/model'
 RSpec.describe DryRobot::Robot::Commands::Left::Transaction do
   subject(:transaction) { described_class.new }
 
-  let(:robot_model) { instance_double(DryRobot::Robot::Model) }
+  let(:robot_model) { instance_double(DryRobot::Robot::Model, report: 'Good') }
 
   before do
     AppContainer.stub('robot.model', robot_model)

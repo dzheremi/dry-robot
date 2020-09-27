@@ -26,7 +26,10 @@ RSpec.describe DryRobot::Robot::Commands::Place::Transaction do
     before { allow(environment_transaction).to receive(:call).and_return(Dry::Monads.Success(input)) }
 
     context 'when the robot accepts the move' do
-      before { allow(robot_model).to receive(:place).and_return(input) }
+      before do
+        allow(robot_model).to receive(:place).and_return(input)
+        allow(robot_model).to receive(:report).and_return('Good')
+      end
 
       it 'returns a success' do
         expect(transaction.call(**input)).to be_success

@@ -18,7 +18,10 @@ RSpec.describe DryRobot::Robot::Commands::Right::Transaction do
   end
 
   context 'when the robot accepts the move' do
-    before { allow(robot_model).to receive(:turn_right).and_return(true) }
+    before do
+      allow(robot_model).to receive(:turn_right).and_return(true)
+      allow(robot_model).to receive(:report).and_return('Good')
+    end
 
     it 'returns a success' do
       expect(transaction.call).to be_success

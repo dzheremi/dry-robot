@@ -17,9 +17,9 @@ module DryRobot
         robot_place_transaction: 'robot.commands.place.transaction',
       ]
 
-      def call(command:) # rubocop:disable Metrics/MethodLength
+      def call(command:) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
         command_validator.call(command: command).bind do |valid_command|
-          case valid_command[0]
+          case valid_command[:command][0]
           when 'LEFT'
             robot_left_command.call
           when 'RIGHT'
@@ -29,8 +29,12 @@ module DryRobot
           when 'REPORT'
             robot_report_command.call
           when 'PLACE'
-            robot_place_contract.call(parse_location(valid_command[1])).bind do |location|
-              robot_place_transaction.call(location)
+            robot_place_contract.call(**parse_location(valid_command[:command][1])).to_monad.bind do |location|
+              robot_place_transaction.call(
+                x_point: location[:x_point],
+                y_point: location[:y_point],
+                heading: location[:heading],
+              )
             end
           end
         end

@@ -15,7 +15,7 @@ module DryRobot
             if model.valid_position?(x_point: x_point, y_point: y_point)
               Success({ x_point: x_point, y_point: y_point })
             else
-              Failure({ x_point: x_point, y_point: y_point })
+              Failure("#{x_point},#{y_point}")
             end
           end
         end

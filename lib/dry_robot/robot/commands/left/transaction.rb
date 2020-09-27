@@ -13,7 +13,7 @@ module DryRobot
 
           def call
             robot.turn_left
-            Success(robot)
+            Success(robot.report)
           rescue DryRobot::Robot::Model::MovementNotPossibleError
             Failure()
           end

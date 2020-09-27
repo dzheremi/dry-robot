@@ -17,9 +17,9 @@ module DryRobot
           ]
 
           def call
-            yield valid_environment_position.call(robot.next_movement)
+            yield valid_environment_position.call(**robot.next_movement)
             robot.move
-            Success(robot)
+            Success(robot.report)
           rescue DryRobot::Robot::Model::MovementNotPossibleError
             Failure()
           end
