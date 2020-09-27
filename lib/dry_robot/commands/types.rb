@@ -18,7 +18,7 @@ module DryRobot
       PositionCommandArguments = Types::Strict::String.enum(*POSITION_COMMANDS)
       SingleCommandArguments = Types::Strict::String.enum(*SINGLE_COMMANDS)
       PositionArgument = Strict::String.constrained(
-        format: /^[1-5]{1},[1-5]{1},[NSEW]{1}$/,
+        format: /^[0-4]{1},[0-4]{1},[NSEW]{1}$/,
       )
 
       class CommandParser
