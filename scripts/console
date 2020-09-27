@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'rubygems'
+require 'bundler'
+Bundler.setup(:default, :development)
+
+require './lib/dry_robot/app'
+require 'pry'
+
+Pry.start

@@ -6,6 +6,7 @@ ruby "~>#{File.read('.ruby-version').strip}"
 
 gem 'dry-monads'
 gem 'dry-types'
+gem 'dry-validation'
 gem 'pry'
 gem 'pry-byebug'
 gem 'rspec'

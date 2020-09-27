@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
-require 'dry-monads'
+require_relative 'request_contract'
 
 module DryRobot
   module Commands
     class Validator
-      include Dry::Monads[:result]
-      include Dry::Monads::Do.for(:call)
-
-      def call(command:); end
+      def call(command:)
+        RequestContract.new.call(command).to_monad
+      end
     end
   end
 end

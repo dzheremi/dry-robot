@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'dry-types'
-require 'dry-monads'
+require 'dry/monads'
 
 module DryRobot
   module Commands
