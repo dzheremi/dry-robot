@@ -4,10 +4,8 @@ require 'dry-types'
 
 module DryRobot
   module Environment
-    module Tabletop
-      module Types
-        include Dry.Types()
-      end
+    module Types
+      include Dry.Types()
     end
   end
 end

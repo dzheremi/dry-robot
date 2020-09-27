@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'dry_robot/environment/tabletop/commands/validate_position/request_contract'
+require 'dry_robot/environment/commands/validate_position/request_contract'
 
-RSpec.describe DryRobot::Environment::Tabletop::Commands::ValidatePosition::RequestContract do
+RSpec.describe DryRobot::Environment::Commands::ValidatePosition::RequestContract do
   subject(:contract) { described_class.new.call(input) }
 
   context 'with valid input' do

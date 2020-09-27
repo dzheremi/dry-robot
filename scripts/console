@@ -5,7 +5,9 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup(:default, :development)
 
-require './lib/dry_robot/app'
 require 'pry'
+require './lib/system/app_container'
+require './lib/dry_robot/bootstrap'
+AppContainer.finalize!
 
 Pry.start

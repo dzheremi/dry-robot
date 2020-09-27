@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby "~>#{File.read('.ruby-version').strip}"
 
 gem 'dry-monads'
+gem 'dry-system'
 gem 'dry-types'
 gem 'dry-validation'
 gem 'pry'
