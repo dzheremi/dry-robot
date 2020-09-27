@@ -181,4 +181,22 @@ RSpec.describe DryRobot::Robot::Model do
       end
     end
   end
+
+  describe '.move' do
+    let(:params) do
+      {
+        x_point: 0,
+        y_point: 0,
+        heading: 'N',
+      }
+    end
+
+    it 'moves to the next_movement position' do
+      model.move
+      expect(model).to have_attributes(
+        x_point: 1,
+        y_point: 0,
+      )
+    end
+  end
 end
