@@ -17,7 +17,7 @@ RSpec.describe DryRobot::Commands::Validator do
   end
 
   context 'with valid input' do
-    let(:input) { { command: 'PLACE 1,1,N' } }
+    let(:input) { 'PLACE 1,1,N' }
     let(:result) { successful_validation }
 
     before { validator.call(command: input) }
@@ -27,7 +27,7 @@ RSpec.describe DryRobot::Commands::Validator do
     end
 
     it 'calls the request contract with the validation input' do
-      expect(request_contract).to have_received(:call).with(input)
+      expect(request_contract).to have_received(:call).with(command: input)
     end
 
     it 'returns a success' do
@@ -36,7 +36,7 @@ RSpec.describe DryRobot::Commands::Validator do
   end
 
   context 'with invalid input' do
-    let(:input) { { command: 'DANCE 1,1,N' } }
+    let(:input) { 'DANCE 1,1,N' }
     let(:result) { failed_validation }
 
     before { validator.call(command: input) }
@@ -46,7 +46,7 @@ RSpec.describe DryRobot::Commands::Validator do
     end
 
     it 'calls the request contract with the validation input' do
-      expect(request_contract).to have_received(:call).with(input)
+      expect(request_contract).to have_received(:call).with(command: input)
     end
 
     it 'returns a failure' do
