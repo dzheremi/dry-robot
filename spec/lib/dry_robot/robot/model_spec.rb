@@ -52,6 +52,24 @@ RSpec.describe DryRobot::Robot::Model do
     end
   end
 
+  describe '.report' do
+    context 'with a valid position' do
+      let(:params) { { x_point: 1, y_point: 1, heading: 'S' } }
+
+      it 'reports it\'s location' do
+        expect(model.report).to eq('1,1,S')
+      end
+    end
+
+    context 'with no position' do
+      let(:params) { {} }
+
+      it 'reports no position' do
+        expect(model.report).to eq('No Position')
+      end
+    end
+  end
+
   describe '.place' do
     context 'with a valid position' do
       let(:params) { {} }

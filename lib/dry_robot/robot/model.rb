@@ -15,6 +15,10 @@ module DryRobot
       option :y_point, type: Types::Strict::Integer, optional: true
       option :heading, type: Types::CompassPoints, optional: true
 
+      def report
+        movement_possible? ? "#{@x_point},#{@y_point},#{@heading}" : 'No Position'
+      end
+
       def place(x_point:, y_point:, heading:)
         @x_point = Types::Strict::Integer[x_point]
         @y_point = Types::Strict::Integer[y_point]
