@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 require 'dry/monads'
 require 'system/import'
+require_relative '../../support/cardinal_direction'
 
 module DryRobot
   module Robot
@@ -12,9 +11,18 @@ module DryRobot
           include Import[robot: 'robot.model']
 
           def call
-            robot.turn_right
-            Success(robot.report)
-          rescue DryRobot::Robot::Model::MovementNotPossibleError
+            return Failure() unless robot.movement_possible?
+
+            robot.place(
+              x_point: robot.x_point,
+              y_point: robot.y_point,
+              heading: Support::CardinalDirection.rotate(
+                heading: robot.heading, rotation: :clockwise
+              )
+            )
+
+            Success()
+          rescue DryRobot::Robot::Model::PositionError
             Failure()
           end
         end

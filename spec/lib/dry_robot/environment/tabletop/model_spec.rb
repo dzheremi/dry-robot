@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 require 'dry_robot/environment/tabletop/model'
 
@@ -8,10 +6,10 @@ RSpec.describe DryRobot::Environment::Tabletop::Model do
 
   describe '.valid_position?' do
     context 'when position is on the surface of the tabletop' do
-      (0..4).each do |x_point|
-        (0..4).each do |y_point|
+      5.times do |x_point|
+        5.times do |y_point|
           it 'returns true' do
-            expect(model.valid_position?(x_point: x_point, y_point: y_point)).to be true
+            expect(model.valid_position?(x_point:, y_point:)).to be true
           end
         end
       end

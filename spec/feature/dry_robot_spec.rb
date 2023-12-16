@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 RSpec.describe 'DryRobot' do
   context 'with valid commands' do
     let(:commands) do
@@ -10,13 +8,13 @@ RSpec.describe 'DryRobot' do
         'MOVE',
         'RIGHT',
         'MOVE',
-        'MOVE',
+        'MOVE'
       ]
     end
 
     before do
       commands.each do |command|
-        AppContainer['commands.adapter'].call(command: command)
+        AppContainer['commands.adapter'].call(command:)
       end
     end
 
@@ -33,13 +31,13 @@ RSpec.describe 'DryRobot' do
         'MOVE',
         'MOVE',
         'MOVE',
-        'MOVE',
+        'MOVE'
       ]
     end
 
     before do
       commands.each do |command|
-        AppContainer['commands.adapter'].call(command: command)
+        AppContainer['commands.adapter'].call(command:)
       end
     end
 

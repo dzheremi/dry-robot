@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
-require_relative './commands/validate_position/request_contract'
-require_relative './commands/validate_position/transaction'
-require_relative './tabletop/model'
+require_relative 'commands/validate_position/request_contract'
+require_relative 'commands/validate_position/transaction'
+require_relative 'tabletop/model'
 
 AppContainer.namespace('environment') do
   register('contract', -> { DryRobot::Environment::Commands::ValidatePosition::RequestContract.new })

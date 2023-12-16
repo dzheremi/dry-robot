@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'dry/monads'
 require 'dry/monads/do'
 require 'system/import'
@@ -17,13 +15,13 @@ module DryRobot
           ]
 
           def call(x_point:, y_point:, heading:)
-            valid_position = yield valid_environment_position.call(x_point: x_point, y_point: y_point)
+            valid_position = yield valid_environment_position.call(x_point:, y_point:)
             robot.place(
               x_point: valid_position[:x_point],
               y_point: valid_position[:y_point],
-              heading: heading,
+              heading:
             )
-            Success(robot.report)
+            Success()
           rescue DryRobot::Robot::Model::PositionError
             Failure()
           end

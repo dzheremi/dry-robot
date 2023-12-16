@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 require 'dry_robot/commands/types'
 
@@ -50,8 +48,8 @@ RSpec.describe DryRobot::Commands::Types do
     subject(:position_argument) { DryRobot::Commands::Types::PositionArgument }
 
     context 'with a valid position' do
-      (0..4).each do |x|
-        (0..4).each do |y|
+      5.times do |x|
+        5.times do |y|
           %w[N S E W].each do |f|
             it "accepts the position #{x}, #{y}, #{f}" do
               expect(position_argument["#{x},#{y},#{f}"]).to eq("#{x},#{y},#{f}")
