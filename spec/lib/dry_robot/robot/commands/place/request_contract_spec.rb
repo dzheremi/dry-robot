@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 require 'dry_robot/robot/commands/place/request_contract'
 

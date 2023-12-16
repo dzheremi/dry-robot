@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 require_relative 'model'
-require_relative './commands/left/transaction'
-require_relative './commands/right/transaction'
-require_relative './commands/move/transaction'
-require_relative './commands/place/transaction'
-require_relative './commands/place/request_contract'
-require_relative './commands/report/transaction'
+require_relative 'commands/left/transaction'
+require_relative 'commands/right/transaction'
+require_relative 'commands/move/transaction'
+require_relative 'commands/place/transaction'
+require_relative 'commands/place/request_contract'
+require_relative 'commands/report/transaction'
 
 AppContainer.namespace('robot') do
   register('model', DryRobot::Robot::Model.new)

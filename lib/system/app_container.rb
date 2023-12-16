@@ -1,11 +1,7 @@
-# frozen_string_literal: true
-
-require 'dry/system/container'
+require 'dry/system'
 
 class AppContainer < Dry::System::Container
-  load_paths!('lib')
   configure do |config|
-    config.default_namespace = 'dry_robot'
-    config.system_dir = Pathname('./lib/system')
+    config.component_dirs.add 'lib'
   end
 end

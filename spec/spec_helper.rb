@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'pry-byebug'
 require 'dry/system/stubs'
 require 'system/app_container'

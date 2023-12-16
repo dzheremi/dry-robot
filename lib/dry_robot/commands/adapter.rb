@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'dry/monads'
 require 'system/import'
 
@@ -18,7 +16,7 @@ module DryRobot
       ]
 
       def call(command:) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-        command_validator.call(command: command).bind do |valid_command|
+        command_validator.call(command:).bind do |valid_command|
           case valid_command[:command][0]
           when 'LEFT'
             robot_left_command.call
@@ -33,7 +31,7 @@ module DryRobot
               robot_place_transaction.call(
                 x_point: location[:x_point],
                 y_point: location[:y_point],
-                heading: location[:heading],
+                heading: location[:heading]
               )
             end
           end
@@ -47,7 +45,7 @@ module DryRobot
         {
           x_point: location_segments[0].to_i,
           y_point: location_segments[1].to_i,
-          heading: location_segments[2],
+          heading: location_segments[2]
         }
       end
     end

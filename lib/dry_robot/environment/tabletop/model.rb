@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module DryRobot
   module Environment
     module Tabletop

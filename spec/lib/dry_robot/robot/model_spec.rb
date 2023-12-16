@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 require 'dry_robot/robot/model'
 
@@ -12,7 +10,7 @@ RSpec.describe DryRobot::Robot::Model do
         {
           x_point: 1,
           y_point: 2,
-          heading: 'W',
+          heading: 'W'
         }
       end
 
@@ -20,7 +18,7 @@ RSpec.describe DryRobot::Robot::Model do
         expect(model).to have_attributes(
           x_point: 1,
           y_point: 2,
-          heading: 'W',
+          heading: 'W'
         )
       end
     end
@@ -32,7 +30,7 @@ RSpec.describe DryRobot::Robot::Model do
         expect(model).to have_attributes(
           x_point: nil,
           y_point: nil,
-          heading: nil,
+          heading: nil
         )
       end
     end
@@ -42,7 +40,7 @@ RSpec.describe DryRobot::Robot::Model do
         {
           x_point: 'Somewhere',
           y_point: 2,
-          heading: 'NNW',
+          heading: 'NNW'
         }
       end
 
@@ -79,7 +77,7 @@ RSpec.describe DryRobot::Robot::Model do
         expect(model).to have_attributes(
           x_point: 1,
           y_point: 1,
-          heading: 'S',
+          heading: 'S'
         )
       end
     end
@@ -88,7 +86,9 @@ RSpec.describe DryRobot::Robot::Model do
       let(:params) { {} }
 
       it 'raises an exception' do
-        expect { model.place(x_point: 'Somewhere', y_point: 1, heading: 'Q') }.to raise_error(DryRobot::Robot::Model::PositionError)
+        expect do
+          model.place(x_point: 'Somewhere', y_point: 1, heading: 'Q')
+        end.to raise_error(DryRobot::Robot::Model::PositionError)
       end
     end
   end
@@ -99,7 +99,7 @@ RSpec.describe DryRobot::Robot::Model do
         {
           x_point: 1,
           y_point: 1,
-          heading: heading,
+          heading:
         }
       end
 
@@ -155,7 +155,7 @@ RSpec.describe DryRobot::Robot::Model do
         {
           x_point: 1,
           y_point: 1,
-          heading: heading,
+          heading:
         }
       end
 
@@ -211,7 +211,7 @@ RSpec.describe DryRobot::Robot::Model do
         {
           x_point: 0,
           y_point: 0,
-          heading: heading,
+          heading:
         }
       end
 
@@ -220,7 +220,7 @@ RSpec.describe DryRobot::Robot::Model do
 
         it 'moves one space up' do
           expect(model.next_movement).to eq(
-            { x_point: 1, y_point: 0 },
+            { x_point: 1, y_point: 0 }
           )
         end
       end
@@ -230,7 +230,7 @@ RSpec.describe DryRobot::Robot::Model do
 
         it 'moves one space up' do
           expect(model.next_movement).to eq(
-            { x_point: -1, y_point: 0 },
+            { x_point: -1, y_point: 0 }
           )
         end
       end
@@ -240,7 +240,7 @@ RSpec.describe DryRobot::Robot::Model do
 
         it 'moves one space right' do
           expect(model.next_movement).to eq(
-            { x_point: 0, y_point: 1 },
+            { x_point: 0, y_point: 1 }
           )
         end
       end
@@ -250,7 +250,7 @@ RSpec.describe DryRobot::Robot::Model do
 
         it 'moves one space left' do
           expect(model.next_movement).to eq(
-            { x_point: 0, y_point: -1 },
+            { x_point: 0, y_point: -1 }
           )
         end
       end
@@ -271,7 +271,7 @@ RSpec.describe DryRobot::Robot::Model do
         {
           x_point: 0,
           y_point: 0,
-          heading: 'N',
+          heading: 'N'
         }
       end
 
@@ -279,7 +279,7 @@ RSpec.describe DryRobot::Robot::Model do
         model.move
         expect(model).to have_attributes(
           x_point: 1,
-          y_point: 0,
+          y_point: 0
         )
       end
     end

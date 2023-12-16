@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 require 'dry_robot/robot/commands/place/transaction'
 require 'dry_robot/robot/model'
@@ -27,8 +25,7 @@ RSpec.describe DryRobot::Robot::Commands::Place::Transaction do
 
     context 'when the robot accepts the move' do
       before do
-        allow(robot_model).to receive(:place).and_return(input)
-        allow(robot_model).to receive(:report).and_return('Good')
+        allow(robot_model).to receive_messages(place: input, report: 'Good')
       end
 
       it 'returns a success' do

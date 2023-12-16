@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'dry-types'
 require 'dry/monads'
 
@@ -18,7 +16,7 @@ module DryRobot
       PositionCommandArguments = Types::Strict::String.enum(*POSITION_COMMANDS)
       SingleCommandArguments = Types::Strict::String.enum(*SINGLE_COMMANDS)
       PositionArgument = Strict::String.constrained(
-        format: /^[0-4]{1},[0-4]{1},[NSEW]{1}$/,
+        format: /^[0-4]{1},[0-4]{1},[NSEW]{1}$/
       )
 
       class CommandParser
@@ -41,7 +39,7 @@ module DryRobot
         private
 
         def arguments_from_string(string)
-          arguments = string.split(' ')
+          arguments = string.split
           if arguments.size <= 2
             Success(arguments)
           else
@@ -63,8 +61,8 @@ module DryRobot
           Success(
             [
               PositionCommandArguments[arguments[0]],
-              PositionArgument[arguments[1]],
-            ],
+              PositionArgument[arguments[1]]
+            ]
           )
         rescue Dry::Types::ConstraintError
           Failure(arguments[0])

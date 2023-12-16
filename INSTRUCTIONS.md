@@ -16,6 +16,8 @@ MOVE
 LEFT
 RIGHT
 REPORT
+MOVE
+REPORT
 ```
 
 - PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
@@ -25,6 +27,8 @@ REPORT
 - LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
 - REPORT will announce the X,Y and orientation of the robot.
 - A robot that is not on the table can choose to ignore the MOVE, LEFT, RIGHT and REPORT commands.
+- The application must not exit after the first REPORT command, i.e. many REPORT commands can be received per session.
+- It is up to you how you exit the application (e.g. exit command, Ctrl-C etc.)
 - Provide test data to exercise the application.
 
 ## Constraints

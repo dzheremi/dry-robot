@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 require 'dry_robot/environment/commands/validate_position/transaction'
 require 'dry_robot/environment/tabletop/model'
