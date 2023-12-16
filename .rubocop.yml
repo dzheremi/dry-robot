@@ -17,6 +17,8 @@ Metrics/MethodLength:
   Max: 15
 RSpec/MultipleExpectations:
   Max: 4
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
 RSpec/NestedGroups:
   Max: 7
 RSpec/ExampleLength:

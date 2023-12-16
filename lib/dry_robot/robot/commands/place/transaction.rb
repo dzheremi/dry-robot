@@ -21,7 +21,7 @@ module DryRobot
               y_point: valid_position[:y_point],
               heading:
             )
-            Success(robot.report)
+            Success()
           rescue DryRobot::Robot::Model::PositionError
             Failure()
           end

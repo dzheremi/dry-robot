@@ -25,7 +25,7 @@ RSpec.describe DryRobot::Robot::Commands::Place::Transaction do
 
     context 'when the robot accepts the move' do
       before do
-        allow(robot_model).to receive_messages(place: input, report: 'Good')
+        allow(robot_model).to receive_messages(place: input)
       end
 
       it 'returns a success' do

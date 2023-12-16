@@ -10,7 +10,9 @@ module DryRobot
           include Import[robot: 'robot.model']
 
           def call
-            Success(robot.report)
+            Success(
+              robot.movement_possible? ? "#{robot.x_point},#{robot.y_point},#{robot.heading}" : 'No Position'
+            )
           end
         end
       end
