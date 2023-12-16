@@ -1,6 +1,6 @@
-FROM ruby:2.7.1-slim-buster
+FROM ruby:3.2.2-slim-bullseye
 
-ENV RUBY_BUNDLER_VERSION '2.1.4'
+ENV RUBY_BUNDLER_VERSION '2.4.10'
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends build-essential \
