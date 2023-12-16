@@ -7,46 +7,23 @@ module DryRobot
       include Dry::Monads[:result]
       include Import[
         command_validator: 'commands.validator',
-        robot_left_command: 'robot.commands.left',
-        robot_right_command: 'robot.commands.right',
-        robot_move_command: 'robot.commands.move',
-        robot_report_command: 'robot.commands.report',
-        robot_place_contract: 'robot.commands.place.contract',
-        robot_place_transaction: 'robot.commands.place.transaction',
+        command_factory: 'robot.command_factory',
+        contract_factory: 'robot.contract_factory'
       ]
 
-      def call(command:) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+      def call(command:) # rubocop:disable Metrics/AbcSize
         command_validator.call(command:).bind do |valid_command|
-          case valid_command[:command][0]
-          when 'LEFT'
-            robot_left_command.call
-          when 'RIGHT'
-            robot_right_command.call
-          when 'MOVE'
-            robot_move_command.call
-          when 'REPORT'
-            robot_report_command.call
-          when 'PLACE'
-            robot_place_contract.call(**parse_location(valid_command[:command][1])).to_monad.bind do |location|
-              robot_place_transaction.call(
-                x_point: location[:x_point],
-                y_point: location[:y_point],
-                heading: location[:heading]
-              )
-            end
+          command_identifier = valid_command[:command][0].downcase
+          command = command_factory.fetch(command_identifier:)
+          return Failure() unless command
+
+          contract = contract_factory.fetch(contract_identifier: command_identifier)
+          return command.call unless contract
+
+          contract.call(valid_command[:command][1]).to_monad.bind do |valid_contract|
+            command.call(**valid_contract.to_h)
           end
         end
-      end
-
-      private
-
-      def parse_location(string)
-        location_segments = string.split(',')
-        {
-          x_point: location_segments[0].to_i,
-          y_point: location_segments[1].to_i,
-          heading: location_segments[2]
-        }
       end
     end
   end
